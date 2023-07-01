@@ -19,4 +19,4 @@ if __name__ == '__main__':
             n = int(line.strip())
             factors = factorize(n)
             if factors is not None:
-                print(f'{n}={factors[0]}*{factors[1]}')
+                print(f'{n}={factors[1]}*{factors[0]}')
