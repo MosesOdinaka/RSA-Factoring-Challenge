@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+import sys
+from math import isqrt
+
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, isqrt(n) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def factorize(n):
+    for i in range(2, isqrt(n) + 1):
+        if n % i == 0 and is_prime(i) and is_prime(n // i):
+            return (i, n // i)
+    return None
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print('Usage: rsa <file>')
+        sys.exit(1)
+
+    with open(sys.argv[1], 'r') as f:
+        n = int(f.read().strip())
+        factors = factorize(n)
+        if factors is not None:
+            print(f'{n}={factors[1]}*{factors[0]}')
