@@ -1,9 +1,22 @@
 #!/usr/bin/python3
+"""
+This module provides functions to check if a number is
+prime and to factorize a number into its prime factors.
+"""
+
 import sys
 from math import isqrt
 
 
 def is_prime(n):
+    """
+    Check if a number is prime.
+
+    :param n: The number to check.
+    :type n: int
+    :return: True if n is prime, False otherwise.
+    :rtype: bool
+    """
     if n <= 1:
         return False
     for i in range(2, isqrt(n) + 1):
@@ -13,6 +26,14 @@ def is_prime(n):
 
 
 def factorize(n):
+    """
+    Factorize a number into its prime factors.
+
+    :param n: The number to factorize.
+    :type n: int
+    :return: A tuple containing the prime factors of n.
+    :rtype: tuple
+    """
     for i in range(2, isqrt(n) + 1):
         if n % i == 0 and is_prime(i) and is_prime(n // i):
             return (i, n // i)
@@ -20,6 +41,10 @@ def factorize(n):
 
 
 if __name__ == '__main__':
+    """
+    This script reads a number from a file and prints its
+    prime factors.
+    """
     if len(sys.argv) != 2:
         print('Usage: rsa <file>')
         sys.exit(1)
